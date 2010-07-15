@@ -39,13 +39,8 @@ Relation::Relation(int n_input, int n_output) {
 //  Create a Set: a relation constructor, but won't allow implicit conversions
 //  from int
 
-#if ! defined NONCOERCIBLE_WONT_WORK_AT_ALL
-Relation::Relation(NonCoercible<int> nci) 
-#else
-Relation::Relation(NonCoercibleInt nci) 
-#endif
-{
-    rel_body = new Rel_Body(value(nci), 0);
+Relation::Relation(int set_size) {
+    rel_body = new Rel_Body(set_size, 0);
     rel_body->ref_count = 1;
     markAsSet();
 }

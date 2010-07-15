@@ -15,7 +15,6 @@
 
 //#include <iostream.h>
 #include <iostream>
-#include <basic/NonCoercible.h>
 
 namespace omega {
 
@@ -29,11 +28,7 @@ public:
 
     Relation(int n_input, int n_output);
     // Creates a set, as in "Relation(3)", but you can't convert int->Relation
-#if ! defined NONCOERCIBLE_WONT_WORK_AT_ALL
-    Relation(NonCoercible<int> nci);
-#else
-    Relation(NonCoercibleInt nci);
-#endif
+    explicit Relation(int set_size);
     Relation(const Relation &r);
     Relation(const Relation &r, Conjunct *c);
     Relation &operator=(const Relation &r);
